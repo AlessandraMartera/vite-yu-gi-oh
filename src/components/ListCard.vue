@@ -12,15 +12,18 @@ export default {
 <template>
     <div class="container_cards">
         <SingleCard />
-
+        <SingleCard />
+        <SingleCard />
+        <SingleCard />
+        <SingleCard />
+        <SingleCard />
     </div>
 </template>
 
 <style lang="scss" scoped>
 .container_cards {
     display: flex;
-    justify-content: space-between;
-    gap: 10px;
+    gap: 15px;
     flex-wrap: wrap;
 }
 </style>

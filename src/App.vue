@@ -20,6 +20,7 @@ export default {
     <AppSearch />
 
     <div id="container">
+
       <div id="banner_found_cards">
         Found <span>39</span> cards
       </div>
@@ -34,12 +35,12 @@ export default {
 @use './styles/partials/variables.scss' as *;
 
 main {
-  width: 70%;
+  width: 80%;
   margin: 5px auto;
 
   #container {
     margin: 5px 0;
-    padding: 25px;
+    padding: 50px;
     background-color: #fff;
 
     // debug

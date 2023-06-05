@@ -9,8 +9,8 @@ export default {
     <div class="card">
         <img src="UlrCardditizio" alt="Card di tizio">
         <div class="text_card">
-            <h3>name tizio</h3>
-            Type
+            <h3>"A" CELL BREEDING DEVICE</h3>
+            Alien
         </div>
     </div>
 </template>
@@ -21,6 +21,7 @@ export default {
 
 .card {
     background-color: $primaryColor;
+    width: calc((100% / 5) - 12px);
 
     img {
         width: 100%;
