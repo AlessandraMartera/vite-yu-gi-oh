@@ -14,12 +14,11 @@ export default {
 
 <style lang="scss" scoped>
 @use './../styles/generals.scss' as *;
-@use './../styles/partials/variables.scss' as *;
+
 
 header {
     background-color: #fff;
     height: 80px;
-
     display: flex;
     align-items: center;
 

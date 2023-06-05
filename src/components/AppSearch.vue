@@ -16,7 +16,7 @@ export default {
 
 <style lang="scss" scoped>
 #searchType {
-    margin: 5px 0;
+    margin: 8px;
     width: 100px;
     padding: 5px 8px;
     background-color: #fff;
