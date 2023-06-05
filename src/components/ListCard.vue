@@ -16,12 +16,11 @@ export default {
 <style lang="scss" scoped>
 .container {
     background-color: #fff;
-    width: 70%;
-    margin: 5px auto;
 }
 
 // DEBUG
 .container {
     min-height: 500px;
+    margin: 5px 0;
 }
 </style>
