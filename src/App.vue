@@ -1,16 +1,47 @@
 <script>
+import axios from 'axios'
+import { store } from './store.js'
 import AppHeader from './components/AppHeader.vue'
 import ListCard from './components/ListCard.vue'
 import AppSearch from './components/AppSearch.vue'
 
+// export file
 export default {
   components: {
     AppHeader,
     ListCard,
     AppSearch,
+  },
+  // data
+  data() {
+    return {
+      store
+    }
+  },
+  // methods
+  methods: {
+    getCards() {
+      axios.get(store.apiUrlCard)
+        .then(ref => {
+          store.cardList = ref.data.data;
+          console.log(store.cardList);
+        }
+        )
+        .catch(err => {
+          console.log(err);
+        })
+    }
 
+  },
+  // created
+  created() {
+    this.getCards();
   }
+
+  // close export defoult
 }
+
+
 </script>
 
 <template>
@@ -25,6 +56,10 @@ export default {
         Found <span>39</span> cards
       </div>
       <ListCard />
+
+      <!-- <div v-for="card in store.cardList">
+                    {{ card.name }}
+                </div> -->
 
     </div>
   </main>

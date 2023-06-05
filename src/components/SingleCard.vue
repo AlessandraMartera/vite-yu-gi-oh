@@ -1,16 +1,24 @@
 <script>
 
 export default {
-    name: "SingleCard"
+    name: "SingleCard",
+    props: {
+        details: Object //props width obj name get in SinlgeCard from List card
+    }
 }
 </script>
 
 <template>
+    <!-- SingleBox Immage -->
     <div class="card">
-        <img src="UlrCardditizio" alt="Card di tizio">
+
+        <!-- usato un v-for per tirare fuori il singolo oggetto all'interno di card_images dove poi ci sono le vari dimensioni dell'img-->
+        <img v-for="img in details.card_images" :src="img.image_url" alt="Card di tizio">
+
+        <!-- name and type -->
         <div class="text_card">
-            <h3>"A" CELL BREEDING DEVICE</h3>
-            Alien
+            <h3>{{ details.name }}</h3>
+            {{ details.archetype }}
         </div>
     </div>
 </template>
