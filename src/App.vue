@@ -4,6 +4,7 @@ import { store } from './store.js'
 import AppHeader from './components/AppHeader.vue'
 import ListCard from './components/ListCard.vue'
 import AppSearch from './components/AppSearch.vue'
+import AppLoader from './components/AppLoader.vue'
 
 // export file
 export default {
@@ -11,6 +12,7 @@ export default {
     AppHeader,
     ListCard,
     AppSearch,
+    AppLoader,
   },
   // data
   data() {
@@ -35,11 +37,13 @@ export default {
       axios.get(newUrl)
         .then(ref => {
           store.cardList = ref.data.data;
+          store.elLoader = false;
         }
         )
         .catch(err => {
           console.log(err);
         })
+
     },
 
     createArrayOftype() {
@@ -60,7 +64,8 @@ export default {
   created() {
     this.getCards();
     this.createArrayOftype()
-  }
+  },
+
 
   // close export defoult
 }
@@ -71,7 +76,11 @@ export default {
 <template>
   <AppHeader message="Yu-Gi-Oh APi"
     urlLogo="https://static.wikia.nocookie.net/logopedia/images/3/35/Yu-Gi-Oh%21_Logo.png" />
-  <main>
+
+  <AppLoader v-if="store.elLoader" />
+
+
+  <main v-else>
     <AppSearch @searchType="getCards" />
     <div id="container">
       <div id="banner_found_cards">
@@ -80,6 +89,19 @@ export default {
       <ListCard />
     </div>
   </main>
+
+  <!-- <AppHeader message="Yu-Gi-Oh APi"
+                                    urlLogo="https://static.wikia.nocookie.net/logopedia/images/3/35/Yu-Gi-Oh%21_Logo.png" />
+                                  <main>
+
+                                    <AppSearch @searchType="getCards" />
+                                    <div id="container">
+                                      <div id="banner_found_cards">
+                                        Found <span>{{ store.cardList.length }}</span> cards
+                                      </div>
+                                      <ListCard />
+                                    </div>
+                                  </main> -->
 </template>
 
 <style lang="scss">
