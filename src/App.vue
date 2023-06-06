@@ -21,12 +21,22 @@ export default {
   // methods
   methods: {
 
+
+
     getCards() {
-      console.log("fatto");
-      axios.get(store.apiUrlCard)
+
+      let newUrl = store.apiUrlCard;
+
+      if (store.searchType.length > 0) {
+        newUrl += `?${store.searchParameter}=${store.searchType}`;
+        console.log(newUrl);
+      } else {
+        newUrl += `?num=20&offset=0`;
+      }
+
+      axios.get(newUrl)
         .then(ref => {
           store.cardList = ref.data.data;
-
         }
         )
         .catch(err => {
