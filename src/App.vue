@@ -21,8 +21,6 @@ export default {
   // methods
   methods: {
 
-
-
     getCards() {
 
       let newUrl = store.apiUrlCard;
@@ -42,12 +40,26 @@ export default {
         .catch(err => {
           console.log(err);
         })
+    },
+
+    createArrayOftype() {
+      axios.get('https://db.ygoprodeck.com/api/v7/archetypes.php')
+        .then(res => {
+          store.arrayOfType = res.data
+          console.log(store.arrayOfType);
+
+        }
+        )
+        .catch(err => {
+          console.log(err);
+        })
     }
 
   },
   // created
   created() {
     this.getCards();
+    this.createArrayOftype()
   }
 
   // close export defoult
