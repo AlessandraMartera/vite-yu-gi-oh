@@ -20,11 +20,13 @@ export default {
   },
   // methods
   methods: {
+
     getCards() {
+      console.log("fatto");
       axios.get(store.apiUrlCard)
         .then(ref => {
           store.cardList = ref.data.data;
-          console.log(store.cardList);
+
         }
         )
         .catch(err => {
@@ -48,19 +50,12 @@ export default {
   <AppHeader message="Yu-Gi-Oh APi"
     urlLogo="https://static.wikia.nocookie.net/logopedia/images/3/35/Yu-Gi-Oh%21_Logo.png" />
   <main>
-    <AppSearch />
-
+    <AppSearch @searchType="getCards" />
     <div id="container">
-
       <div id="banner_found_cards">
-        Found <span>39</span> cards
+        Found <span>{{ store.cardList.length }}</span> cards
       </div>
       <ListCard />
-
-      <!-- <div v-for="card in store.cardList">
-                    {{ card.name }}
-                </div> -->
-
     </div>
   </main>
 </template>
